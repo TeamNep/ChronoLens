@@ -116,7 +116,8 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 ### Low-Fidelity Wireframes (To Add)
 
-Ritesh Add the Picture here:
+![IMG_0752](https://github.com/user-attachments/assets/ef7511fc-f489-4c4f-ac0e-85debd3aea0e)
+
 
 ### [BONUS] Digital Wireframes & Mockups
 
