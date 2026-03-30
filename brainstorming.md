@@ -29,8 +29,6 @@
 9. **StoryTrails** (Education + Entertainment)  
    Audio storytelling tours tied to landmarks, with user-generated local history snippets.
 
-Checkpoint met: 6+ ideas generated.
-
 ---
 
 ## Top 3 Ideas Selected by Group Vote
