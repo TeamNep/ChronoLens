@@ -121,10 +121,10 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 ### [BONUS] Digital Wireframes & Mockups
 
-<img width="959" height="1035" alt="image" src="https://github.com/user-attachments/assets/eb258d80-9295-46e3-858c-df3b10818d2a" />
-<img width="959" height="1035" alt="image" src="https://github.com/user-attachments/assets/f2cf3617-3e22-4edc-9555-e36823c1f507" />
-<img width="959" height="1035" alt="image" src="https://github.com/user-attachments/assets/359d06b6-4c03-4f17-a600-84e134cac703" />
-<img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/b5dd4110-6043-4597-8d92-40627bf30a65" />
+<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/eb258d80-9295-46e3-858c-df3b10818d2a" />
+<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/f2cf3617-3e22-4edc-9555-e36823c1f507" />
+<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/359d06b6-4c03-4f17-a600-84e134cac703" />
+<img width="965" height="500" alt="image" src="https://github.com/user-attachments/assets/b5dd4110-6043-4597-8d92-40627bf30a65" />
 
 ### [BONUS] Interactive Prototype
 
