@@ -75,7 +75,7 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
   - Full post view with comments thread and reactions.
 
 - **Travel Mode Settings Screen**
-  - Toggle daily reminder and preferred reminder time (1 notfication per day).
+  - Toggle daily reminder and preferred reminder time (1 notification per day).
 
 ### 3. Navigation
 
