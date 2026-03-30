@@ -121,14 +121,15 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 ### [BONUS] Digital Wireframes & Mockups
 
-<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/eb258d80-9295-46e3-858c-df3b10818d2a" />
-<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/f2cf3617-3e22-4edc-9555-e36823c1f507" />
-<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/359d06b6-4c03-4f17-a600-84e134cac703" />
-<img width="965" height="500" alt="image" src="https://github.com/user-attachments/assets/b5dd4110-6043-4597-8d92-40627bf30a65" />
+<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/d48a01d3-8dc4-4241-9076-388b3beb69ea" />
+<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/4f383198-0c3a-4e6d-9aac-29909f5f5c7e" />
+<img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/18427b79-36af-4b8c-b01c-b81b7e7b50ff" />
+<img width="965" height="673" alt="image" src="https://github.com/user-attachments/assets/a742961e-a89d-4213-a974-ae1c7432c2d0" />
+
 
 ### [BONUS] Interactive Prototype
 
-https://github.com/user-attachments/assets/18eb278e-5977-4f62-9dc6-a7a02b0c3834
+https://github.com/user-attachments/assets/0cccf496-c5c3-4b1f-8d4d-d22c3f3ac24c
 
 ## Schema
 
