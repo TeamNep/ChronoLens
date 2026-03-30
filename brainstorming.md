@@ -1,6 +1,6 @@
 # App Design Fest - Brainstorming
 
-## New App Ideas (List)
+## New App Ideas
 
 1. **ChronoLens** (Education + Travel + Social)  
    Take a picture of a landmark, building, or art piece, use an LLM to identify it, then ask questions in a chat space with follow-up support. The app fetches Wikipedia context and returns grounded answers. Save and share only collection card data (image + identified place info), not full chat history.
@@ -39,7 +39,7 @@
 
 ---
 
-## Evaluate Top 3 Ideas (Mobile, Story, Market, Habit, Scope)
+## Evaluation of Top 3 Ideas (Mobile, Story, Market, Habit, Scope)
 
 Scoring scale: **1 (weak) to 5 (strong)**
 
