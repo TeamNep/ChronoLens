@@ -31,7 +31,7 @@
 
 ---
 
-## Top 3 Ideas Selected by Group Vote
+## Top 3 Ideas that we selected by Group Vote
 
 1. **ChronoLens**
 2. **TrailGuard**
