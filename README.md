@@ -31,12 +31,12 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 #### Required Must-have Stories
 
-- [ ] User can create an account and sign in.
-- [ ] User can grant camera and location permissions.
-- [ ] User can capture or upload a landmark photo, have an LLM identify it.
-- [ ] User can ask a custom question about the identified landmark, and retrieve an answer.
-- [ ] User can save a discovered place to personal **Collection** as a card containing image + identified place info + location/timestamp (without full chat history).
-- [ ] User can share any collection card to **Community** in one tap (without full chat history).
+- [x] User can create an account and sign in.
+- [x] User can grant camera and location permissions.
+- [x] User can capture or upload a landmark photo, have an LLM identify it.
+- [x] User can ask a custom question about the identified landmark, and retrieve an answer.
+- [x] User can save a discovered place to personal **Collection** as a card containing image + identified place info + location/timestamp (without full chat history).
+- [x] User can share any collection card to **Community** in one tap (without full chat history).
 - [ ] User can enable/disable **Travel Mode** daily reminder notifications.
 
 #### Optional Nice-to-have Stories
