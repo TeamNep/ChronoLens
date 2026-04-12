@@ -33,8 +33,8 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 - [ ] User can create an account and sign in.
 - [ ] User can grant camera and location permissions.
-- [ ] User can capture or upload a landmark photo, have an LLM identify it, ask a custom question, and retrieve an answer.
-- [ ] User can ask follow-up questions in the same landmark chat session.
+- [ ] User can capture or upload a landmark photo, have an LLM identify it.
+- [ ] User can ask a custom question about the identified landmark, and retrieve an answer.
 - [ ] User can save a discovered place to personal **Collection** as a card containing image + identified place info + location/timestamp (without full chat history).
 - [ ] User can share any collection card to **Community** in one tap (without full chat history).
 - [ ] User can enable/disable **Travel Mode** daily reminder notifications.
