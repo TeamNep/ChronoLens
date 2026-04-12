@@ -129,6 +129,7 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 ## Build Progress:
 
 **Milestones: Sprint 1 & 2 completed**
+
 We completed two Milestones (Sprint 1 and Sprint 2) for this unit submission!
 
 <div>
