@@ -126,10 +126,17 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 <img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/18427b79-36af-4b8c-b01c-b81b7e7b50ff" />
 <img width="965" height="673" alt="image" src="https://github.com/user-attachments/assets/a742961e-a89d-4213-a974-ae1c7432c2d0" />
 
+### Build Progress:
 
-### [BONUS] Interactive Prototype
+**Sprint 1 & 2 completed**
 
-https://github.com/user-attachments/assets/0cccf496-c5c3-4b1f-8d4d-d22c3f3ac24c
+<div>
+    <a href="https://www.loom.com/share/bc5dab2b41074a5da90459fa7fcccc11">
+    </a>
+    <a href="https://www.loom.com/share/bc5dab2b41074a5da90459fa7fcccc11">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/bc5dab2b41074a5da90459fa7fcccc11-1c738f010df1a298-full-play.gif#t=0.1">
+    </a>
+  </div>
 
 ## Schema
 
