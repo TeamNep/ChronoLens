@@ -130,7 +130,7 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 **Milestones: Sprint 1 & 2 completed (Combined Video)**
 
-We completed two Milestones (Sprint 1 and Sprint 2) for this unit submission!
+We completed two Milestones (Sprint 1 and Sprint 2) for this unit submission! Sprint 3 will be done in next unit!
 
 <div>
     <a href="https://www.loom.com/share/bc5dab2b41074a5da90459fa7fcccc11">
