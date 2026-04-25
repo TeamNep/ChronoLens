@@ -37,13 +37,13 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 - [x] User can ask a custom question about the identified landmark, and retrieve an answer.
 - [x] User can save a discovered place to personal **Collection** as a card containing image + identified place info + location/timestamp (without full chat history).
 - [x] User can share any collection card to **Community** in one tap (without full chat history).
-- [ ] User can enable/disable **Travel Mode** daily reminder notifications.
+- [x] User can enable/disable **Travel Mode** daily reminder notifications.
 
 #### Optional Nice-to-have Stories
 
-- [ ] User can react and comment on community posts.
-- [ ] User can earn badges/streaks for consecutive daily discoveries.
-- [ ] User can bookmark community posts for later reading.
+- [x] User can react and comment on community posts.
+- [x] User can earn badges/streaks for consecutive daily discoveries.
+- [x] User can bookmark community posts for later reading.
 - [ ] User can filter collection by city, era, or tags.
 - [ ] User can translate place answers/summaries to preferred language.
 - [ ] User can follow specific users or local creators.
