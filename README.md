@@ -142,7 +142,7 @@ We completed two Milestones (Sprint 1 and Sprint 2) for this unit submission! Sp
 
 **Milestones: Sprint 3 completed (Final Sprint)**
 
-Only the featuers developed in Sprint 3 is shown in the video.
+Only the features developed in Sprint 3 is shown in the video.
 <div>
     <a href="https://www.loom.com/share/fc8c752849a74a7183dfda06e56c0dad">
     </a>
