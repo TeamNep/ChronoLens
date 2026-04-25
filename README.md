@@ -118,7 +118,6 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 ![IMG_0752](https://github.com/user-attachments/assets/ef7511fc-f489-4c4f-ac0e-85debd3aea0e)
 
-
 ### [BONUS] Digital Wireframes & Mockups
 
 <img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/d48a01d3-8dc4-4241-9076-388b3beb69ea" />
@@ -130,7 +129,7 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 **Milestones: Sprint 1 & 2 completed (Combined Video)**
 
-We completed two Milestones (Sprint 1 and Sprint 2) for this unit submission!
+We completed two Milestones (Sprint 1 and Sprint 2) for this unit submission! Sprint 3 will be done in next unit!
 
 <div>
     <a href="https://www.loom.com/share/bc5dab2b41074a5da90459fa7fcccc11">

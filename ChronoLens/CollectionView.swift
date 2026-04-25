@@ -47,44 +47,48 @@ private struct CollectionRow: View {
     @State private var image: UIImage?
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 14) {
             if let image {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 60, height: 60)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .frame(width: 64, height: 64)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(width: 60, height: 60)
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(.systemGray6))
+                    .frame(width: 64, height: 64)
                     .overlay {
                         ProgressView().controlSize(.small)
                     }
             }
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(entry.placeName ?? "Unknown")
                     .font(.headline)
                 Text(entry.summary ?? "")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
-                HStack {
+                HStack(spacing: 4) {
                     if let date = entry.scannedAt {
                         Text(date, style: .date)
                     }
                     if let loc = entry.locationName {
-                        Text("- \(loc)")
+                        Text("·")
+                        Text(loc)
+                            .lineLimit(1)
                     }
                     if entry.isShared == true {
                         Image(systemName: "globe")
+                            .foregroundStyle(.blue)
                     }
                 }
                 .font(.caption2)
                 .foregroundStyle(.secondary)
             }
         }
+        .padding(.vertical, 2)
         .task {
             await loadImage()
         }
@@ -113,33 +117,38 @@ struct CollectionDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 18) {
                 if let image {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
                 }
 
                 Text(entry.placeName ?? "Unknown")
                     .font(.title.bold())
 
                 Text(entry.summary ?? "")
+                    .font(.body)
                     .foregroundStyle(.secondary)
+                    .lineSpacing(2)
 
-                if let date = entry.scannedAt {
-                    HStack {
-                        Image(systemName: "clock")
-                        Text(date, format: .dateTime.month().day().year().hour().minute())
-                    }
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                }
-
-                if let loc = entry.locationName {
-                    Label(loc, systemImage: "location.fill")
+                HStack(spacing: 16) {
+                    if let date = entry.scannedAt {
+                        HStack(spacing: 4) {
+                            Image(systemName: "clock")
+                            Text(date, format: .dateTime.month().day().year().hour().minute())
+                        }
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                    }
+
+                    if let loc = entry.locationName {
+                        Label(loc, systemImage: "location.fill")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
 
                 Button {
@@ -149,16 +158,21 @@ struct CollectionDetailView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
+                .controlSize(.large)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
 
                 Divider()
+                    .padding(.vertical, 4)
 
                 if !shared && entry.isShared != true {
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 12) {
                         Text("Share to Community")
                             .font(.headline)
 
                         TextField("Add a caption (optional)", text: $caption)
-                            .textFieldStyle(.roundedBorder)
+                            .padding(12)
+                            .background(Color(.systemGray6))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
 
                         Button {
                             shareToCommunity()
@@ -167,10 +181,20 @@ struct CollectionDetailView: View {
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                 } else {
-                    Label("Shared to Community", systemImage: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
+                    HStack(spacing: 6) {
+                        Image(systemName: "checkmark.circle.fill")
+                        Text("Shared to Community")
+                    }
+                    .foregroundStyle(.green)
+                    .font(.subheadline.weight(.medium))
+                    .padding(12)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green.opacity(0.08))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
             .padding()

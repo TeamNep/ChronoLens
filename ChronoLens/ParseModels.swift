@@ -48,3 +48,42 @@ struct ParseComment: ParseObject {
     var text: String?
     var user: Pointer<ChronoUser>?
 }
+
+struct ParseReaction: ParseObject {
+    var objectId: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var ACL: ParseACL?
+    var originalData: Data?
+
+    var post: Pointer<ParsePost>?
+    var emoji: String?
+    var user: Pointer<ChronoUser>?
+    var authorName: String?
+}
+
+struct ParseBookmark: ParseObject {
+    var objectId: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var ACL: ParseACL?
+    var originalData: Data?
+
+    var post: Pointer<ParsePost>?
+    var user: Pointer<ChronoUser>?
+}
+
+struct ParseUserBadge: ParseObject {
+    var objectId: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var ACL: ParseACL?
+    var originalData: Data?
+
+    var user: Pointer<ChronoUser>?
+    var totalScans: Int?
+    var currentStreak: Int?
+    var longestStreak: Int?
+    var lastScanDate: String? // yyyy-MM-dd format
+    var badgeLevel: String?   // "beginner", "explorer", "historian", "master", "legend"
+}
