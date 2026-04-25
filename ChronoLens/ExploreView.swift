@@ -22,6 +22,48 @@ struct ExploreView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
+                    // Badge & streak card
+                    if let badge = appState.userBadge {
+                        HStack(spacing: 14) {
+                            Text(AppState.badgeEmoji(for: badge.badgeLevel ?? "beginner"))
+                                .font(.system(size: 32))
+                                .frame(width: 48, height: 48)
+                                .background(
+                                    Circle()
+                                        .fill(Color(.systemGray6))
+                                )
+
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(AppState.badgeTitle(for: badge.badgeLevel ?? "beginner"))
+                                    .font(.subheadline.bold())
+
+                                HStack(spacing: 12) {
+                                    Label("\(badge.currentStreak ?? 0) day streak", systemImage: "flame.fill")
+                                        .foregroundStyle(.orange)
+                                    Label("\(badge.totalScans ?? 0) scans", systemImage: "binoculars")
+                                        .foregroundStyle(.secondary)
+                                }
+                                .font(.caption)
+                            }
+
+                            Spacer()
+
+                            if let next = AppState.nextBadgeInfo(currentScans: badge.totalScans ?? 0) {
+                                VStack(spacing: 2) {
+                                    Text("\(next.scansNeeded)")
+                                        .font(.title3.bold())
+                                        .foregroundStyle(.blue)
+                                    Text("to next")
+                                        .font(.caption2)
+                                        .foregroundStyle(.tertiary)
+                                }
+                            }
+                        }
+                        .padding(14)
+                        .background(Color(.systemGray6).opacity(0.7))
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                    }
+
                     if let imageData = selectedImageData,
                        let uiImage = UIImage(data: imageData) {
                         // Image selected
@@ -29,23 +71,30 @@ struct ExploreView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 300)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
 
                         if let name = identifiedName, let summary = identifiedSummary {
-                            // Identified
-                            VStack(alignment: .leading, spacing: 8) {
+                            // Identified result card
+                            VStack(alignment: .leading, spacing: 10) {
                                 Text(name)
                                     .font(.title2.bold())
                                 Text(summary)
+                                    .font(.body)
                                     .foregroundStyle(.secondary)
+                                    .lineSpacing(2)
 
                                 if let loc = locationManager.locationName {
                                     Label(loc, systemImage: "location.fill")
                                         .font(.caption)
                                         .foregroundStyle(.tertiary)
+                                        .padding(.top, 2)
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(16)
+                            .background(Color(.systemGray6))
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
 
                             HStack(spacing: 12) {
                                 Button {
@@ -54,8 +103,11 @@ struct ExploreView: View {
                                     Label(
                                         "Learn More",
                                         systemImage: "bubble.left.and.text.bubble.right")
+                                    .frame(maxWidth: .infinity)
                                 }
                                 .buttonStyle(.borderedProminent)
+                                .controlSize(.large)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
 
                                 Button {
                                     saveToCollection()
@@ -65,23 +117,33 @@ struct ExploreView: View {
                                         systemImage: savedToCollection
                                             ? "checkmark.circle.fill" : "square.and.arrow.down"
                                     )
+                                    .frame(maxWidth: .infinity)
                                 }
                                 .buttonStyle(.bordered)
+                                .controlSize(.large)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .disabled(savedToCollection)
                             }
 
-                            Button("Scan Another") {
+                            Button {
                                 resetState()
+                            } label: {
+                                Text("Scan Another")
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(.secondary)
                             }
-                            .font(.subheadline)
+                            .padding(.top, 4)
                         } else if isIdentifying {
-                            VStack(spacing: 12) {
+                            VStack(spacing: 14) {
                                 ProgressView()
                                     .controlSize(.large)
                                 Text("Identifying landmark...")
+                                    .font(.subheadline)
                                     .foregroundStyle(.secondary)
                             }
-                            .padding(.top, 20)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 30)
                         } else {
                             Button {
                                 identifyLandmark()
@@ -93,24 +155,48 @@ struct ExploreView: View {
                             }
                             .buttonStyle(.borderedProminent)
                             .controlSize(.large)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .shadow(color: .blue.opacity(0.2), radius: 6, y: 3)
                         }
                     } else {
-                        // No image selected
-                        VStack(spacing: 20) {
-                            Image(systemName: "building.columns")
-                                .font(.system(size: 64))
+                        // No image selected — empty state
+                        VStack(spacing: 24) {
+                            ZStack {
+                                Circle()
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [.blue.opacity(0.12), .indigo.opacity(0.08)],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .frame(width: 120, height: 120)
+
+                                Image(systemName: "building.columns")
+                                    .font(.system(size: 48))
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.blue, .indigo],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                            }
+
+                            VStack(spacing: 8) {
+                                Text("Discover Historical Places")
+                                    .font(.system(size: 22, weight: .bold, design: .rounded))
+
+                                Text(
+                                    "Take or select a photo of a landmark, building, or artwork to learn its history."
+                                )
+                                .font(.body)
                                 .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                                .lineSpacing(2)
+                            }
 
-                            Text("Discover Historical Places")
-                                .font(.title2.bold())
-
-                            Text(
-                                "Take or select a photo of a landmark, building, or artwork to learn its history."
-                            )
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
-
-                            HStack(spacing: 16) {
+                            HStack(spacing: 14) {
                                 Button {
                                     showCamera = true
                                 } label: {
@@ -119,6 +205,8 @@ struct ExploreView: View {
                                 }
                                 .buttonStyle(.borderedProminent)
                                 .controlSize(.large)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .shadow(color: .blue.opacity(0.2), radius: 6, y: 3)
 
                                 PhotosPicker(selection: $selectedItem, matching: .images) {
                                     Label("Photos", systemImage: "photo.on.rectangle")
@@ -126,18 +214,24 @@ struct ExploreView: View {
                                 }
                                 .buttonStyle(.bordered)
                                 .controlSize(.large)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
                         }
                         .padding(.top, 60)
                     }
 
                     if let error = errorMessage {
-                        Text(error)
-                            .foregroundStyle(.red)
-                            .font(.callout)
-                            .padding()
-                            .background(Color.red.opacity(0.1))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        HStack(spacing: 8) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.callout)
+                            Text(error)
+                                .font(.callout)
+                        }
+                        .foregroundStyle(.red)
+                        .padding(14)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.red.opacity(0.08))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                 }
                 .padding()
@@ -253,6 +347,7 @@ struct ExploreView: View {
                 let result = try await NVIDIAVisionService().identifyLandmark(imageData: imageData)
                 identifiedName = result.name
                 identifiedSummary = result.summary
+                appState.recordDiscovery()
             } catch {
                 errorMessage = error.localizedDescription
             }
@@ -319,6 +414,14 @@ struct ExploreView: View {
 struct TravelModeSettingsView: View {
     @Environment(AppState.self) var appState
     @Environment(\.dismiss) var dismiss
+    @State private var reminderTime = Date()
+
+    private func timeFromComponents() -> Date {
+        var components = DateComponents()
+        components.hour = appState.reminderHour
+        components.minute = appState.reminderMinute
+        return Calendar.current.date(from: components) ?? Date()
+    }
 
     var body: some View {
         @Bindable var appState = appState
@@ -328,11 +431,65 @@ struct TravelModeSettingsView: View {
                 Section {
                     Toggle("Travel Mode", isOn: $appState.travelModeEnabled)
                 } header: {
-                    Text("Daily Reminders")
+                    Text("Travel Mode")
                 } footer: {
                     Text(
-                        "When enabled, you'll get a daily reminder to scan and learn about one unique historical place."
+                        "When enabled, you'll get one notification per day to scan and learn about a unique historical place."
                     )
+                }
+
+                if appState.travelModeEnabled {
+                    Section {
+                        DatePicker("Reminder Time", selection: $reminderTime, displayedComponents: .hourAndMinute)
+                            .onChange(of: reminderTime) { _, newValue in
+                                let components = Calendar.current.dateComponents([.hour, .minute], from: newValue)
+                                appState.reminderHour = components.hour ?? 9
+                                appState.reminderMinute = components.minute ?? 0
+                            }
+                    } header: {
+                        Text("Preferred Time")
+                    } footer: {
+                        Text("Choose when you'd like to receive your daily discovery reminder.")
+                    }
+                }
+
+                if let badge = appState.userBadge {
+                    Section {
+                        HStack {
+                            Text("Current Badge")
+                            Spacer()
+                            Text("\(AppState.badgeEmoji(for: badge.badgeLevel ?? "beginner")) \(AppState.badgeTitle(for: badge.badgeLevel ?? "beginner"))")
+                                .foregroundStyle(.secondary)
+                        }
+                        HStack {
+                            Text("Total Discoveries")
+                            Spacer()
+                            Text("\(badge.totalScans ?? 0)")
+                                .foregroundStyle(.secondary)
+                        }
+                        HStack {
+                            Text("Current Streak")
+                            Spacer()
+                            Text("\(badge.currentStreak ?? 0) day\(badge.currentStreak == 1 ? "" : "s")")
+                                .foregroundStyle(.secondary)
+                        }
+                        HStack {
+                            Text("Longest Streak")
+                            Spacer()
+                            Text("\(badge.longestStreak ?? 0) day\(badge.longestStreak == 1 ? "" : "s")")
+                                .foregroundStyle(.secondary)
+                        }
+                        if let next = AppState.nextBadgeInfo(currentScans: badge.totalScans ?? 0) {
+                            HStack {
+                                Text("Next Badge")
+                                Spacer()
+                                Text("\(next.nextLevel) (\(next.scansNeeded) more)")
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    } header: {
+                        Text("Your Progress")
+                    }
                 }
             }
             .navigationTitle("Settings")
@@ -340,6 +497,17 @@ struct TravelModeSettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") { dismiss() }
+                }
+            }
+            .onAppear {
+                reminderTime = timeFromComponents()
+                if appState.travelModeEnabled {
+                    appState.requestNotificationPermission()
+                }
+            }
+            .onChange(of: appState.travelModeEnabled) { _, enabled in
+                if enabled {
+                    appState.requestNotificationPermission()
                 }
             }
         }

@@ -27,21 +27,29 @@ struct LandmarkChatView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 180)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .clipShape(RoundedRectangle(cornerRadius: 14))
+                                .shadow(color: .black.opacity(0.08), radius: 6, y: 3)
                         }
 
                         Text(summary)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
+                            .lineSpacing(2)
 
                         Divider()
                             .padding(.vertical, 4)
 
                         if chatMessages.isEmpty && !isLoading {
-                            Text("Ask anything about \(placeName)")
-                                .foregroundStyle(.tertiary)
-                                .frame(maxWidth: .infinity)
-                                .padding(.top, 20)
+                            VStack(spacing: 8) {
+                                Image(systemName: "text.bubble")
+                                    .font(.title2)
+                                    .foregroundStyle(.tertiary)
+                                Text("Ask anything about \(placeName)")
+                                    .foregroundStyle(.tertiary)
+                                    .font(.subheadline)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 24)
                         }
 
                         // Chat messages
@@ -83,17 +91,20 @@ struct LandmarkChatView: View {
             // Input bar
             HStack(spacing: 8) {
                 TextField("Ask about \(placeName)...", text: $inputText)
-                    .textFieldStyle(.roundedBorder)
+                    .padding(10)
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     .onSubmit { sendMessage() }
 
                 Button(action: sendMessage) {
                     Image(systemName: "arrow.up.circle.fill")
                         .font(.title2)
+                        .foregroundStyle(inputText.trimmingCharacters(in: .whitespaces).isEmpty || isLoading ? Color.gray.opacity(0.4) : .blue)
                 }
                 .disabled(inputText.trimmingCharacters(in: .whitespaces).isEmpty || isLoading)
             }
             .padding(.horizontal)
-            .padding(.vertical, 8)
+            .padding(.vertical, 10)
             .background(.bar)
         }
         .navigationTitle(placeName)
@@ -204,10 +215,12 @@ struct ChatBubble: View {
             if message.isUser { Spacer(minLength: 48) }
 
             Text(message.text)
-                .padding(12)
-                .background(message.isUser ? Color.blue : Color(.systemGray5))
+                .font(.body)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .background(message.isUser ? Color.blue : Color(.systemGray6))
                 .foregroundStyle(message.isUser ? .white : .primary)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .clipShape(RoundedRectangle(cornerRadius: 18))
 
             if !message.isUser { Spacer(minLength: 48) }
         }

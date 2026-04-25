@@ -4,6 +4,7 @@ import SwiftUI
 struct SignUpView: View {
     var appState: AppState
     @Environment(\.dismiss) var dismiss
+    var onSwitchToLogin: (() -> Void)? = nil
 
     @State private var fullName = ""
     @State private var email = ""
@@ -14,16 +15,17 @@ struct SignUpView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
-                VStack(alignment: .leading, spacing: 4) {
+            VStack(spacing: 28) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text("Create Account")
-                        .font(.largeTitle.bold())
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
                     Text("Start exploring history.")
+                        .font(.body)
                         .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                VStack(spacing: 16) {
+                VStack(spacing: 18) {
                     LabeledField(label: "FULL NAME", placeholder: "John Doe", text: $fullName)
                     LabeledField(label: "EMAIL", placeholder: "john@example.com", text: $email)
                         .textContentType(.emailAddress)
@@ -35,10 +37,17 @@ struct SignUpView: View {
                 }
 
                 if let error = errorMessage {
-                    Text(error)
-                        .foregroundStyle(.red)
-                        .font(.callout)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack(spacing: 6) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.caption)
+                        Text(error)
+                            .font(.callout)
+                    }
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(12)
+                    .background(Color.red.opacity(0.08))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
 
                 Button {
@@ -48,31 +57,32 @@ struct SignUpView: View {
                         ProgressView()
                             .tint(.white)
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
+                            .padding(.vertical, 16)
                     } else {
                         Text("Sign Up")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
+                            .padding(.vertical, 16)
                     }
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.blue)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .shadow(color: .blue.opacity(0.2), radius: 6, y: 3)
                 .disabled(isLoading)
 
                 HStack(spacing: 4) {
                     Text("Already have an account?")
                         .foregroundStyle(.secondary)
                     Button("Log In") {
-                        dismiss()
+                        onSwitchToLogin?()
                     }
                     .fontWeight(.semibold)
                 }
                 .font(.subheadline)
             }
             .padding(.horizontal, 30)
-            .padding(.top, 20)
+            .padding(.top, 30)
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -111,18 +121,23 @@ struct LabeledField: View {
     var isSecure = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 7) {
             Text(label)
-                .font(.caption)
-                .fontWeight(.semibold)
+                .font(.caption2)
+                .fontWeight(.bold)
                 .foregroundStyle(.secondary)
+                .tracking(0.5)
 
             if isSecure {
                 SecureField(placeholder, text: $text)
-                    .textFieldStyle(.roundedBorder)
+                    .padding(12)
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
                 TextField(placeholder, text: $text)
-                    .textFieldStyle(.roundedBorder)
+                    .padding(12)
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             }
         }
     }

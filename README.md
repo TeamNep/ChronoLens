@@ -118,7 +118,6 @@ When saving to **Collection**, only the landmark snapshot card is stored (image 
 
 ![IMG_0752](https://github.com/user-attachments/assets/ef7511fc-f489-4c4f-ac0e-85debd3aea0e)
 
-
 ### [BONUS] Digital Wireframes & Mockups
 
 <img width="965" height="1035" alt="image" src="https://github.com/user-attachments/assets/d48a01d3-8dc4-4241-9076-388b3beb69ea" />
