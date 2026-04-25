@@ -142,7 +142,7 @@ We completed two Milestones (Sprint 1 and Sprint 2) for this unit submission! Sp
   </div>
 
 
-**Milestones: Sprint 3 completed (Final Sprint)**
+**Milestones: Sprint 3 completed (Final Sprint- New Updates)**
 
 Only the features developed in Sprint 3 is shown in the video.
 <div>
