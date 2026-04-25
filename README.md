@@ -151,6 +151,11 @@ Only the features developed in Sprint 3 is shown in the video.
     </a>
   </div>
 
+
+**Demo Video**
+
+https://drive.google.com/file/d/1IGisHJ2BBumo36Qao0bjZD_1Ng2eaRJe/view?usp=sharing
+
 ## Schema
 
 ### Models
